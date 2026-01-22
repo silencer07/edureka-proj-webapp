@@ -11,7 +11,7 @@ alert("You will be navigated to Add module");
     <button name="View Product" value="View Product" type="button" onclick="viewProduct()">View Product</button>  
 <script>  
 function viewProduct(){  
-alert("You will be navigated to view module");  
+alert("You will be navigated to view module test webhook");
 }
 </script>
 </body>
