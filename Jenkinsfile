@@ -1,13 +1,7 @@
 pipeline {
 	agent any
 	stages {
-		// stage('Pull from GitHub') {
-		//     steps {
-		//         git branch: 'main',
-		//             url: 'https://github.com/silencer07/edureka-proj-webapp'
-		//     }
-		// }
-		stage('Build') {
+		stage('Execute tests') {
 			steps {
 				// Run Maven on a Unix agent.
 				sh "mvn clean test"
@@ -20,10 +14,9 @@ pipeline {
 			}
 		}
 
-		stage('Execute tests') {
+		stage('Package') {
 			steps {
 				sh "mvn package -DskipTests"
-				sh "ls -lah"
 			}
 
 			post {
