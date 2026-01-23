@@ -4,14 +4,10 @@
   connection: local
   gather_facts: false
 
-  vars:
-    cluster_name: edureka-proj
-
   tasks:
     - name: Update kubeconfig for EKS cluster
       shell: |
-        eksctl utils write-kubeconfig \
-          --cluster {{ cluster_name }}
+        eksctl utils write-kubeconfig --cluster edureka-proj
 
     - name: Apply Kubernetes Deployment
       shell: ./kubectl apply -f k8s/deployment.yaml
