@@ -9,6 +9,12 @@
       shell: |
         eksctl utils write-kubeconfig --cluster edureka-proj
 
+    - name: Delete existing deployments
+      shell: kubectl delete deployment edureka-proj-webapp
+
+    - name: Delete existing services
+      shell: kubectl delete service edureka-proj-webapp-service
+
     - name: Apply Kubernetes Deployment
       shell: kubectl apply -f k8s/deployment.yaml --validate=false
 
