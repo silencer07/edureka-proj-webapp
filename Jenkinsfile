@@ -37,6 +37,14 @@ pipeline {
             steps {
                 script {
                     sh """
+                        whoami
+                        groups
+                        ls -l /var/run/docker.sock
+                    """
+                }
+
+                script {
+                    sh """
                         docker buildx build \
                           --platform linux/amd64 \
                           -t $DOCKERHUB_USER/$DOCKERHUB_REPO:$BUILD_NUMBER_TAG \
