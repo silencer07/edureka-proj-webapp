@@ -1,10 +1,20 @@
 ---
-- name: Hello World from Ansible
+- name: Deploy Kubernetes resources to EKS
   hosts: localhost
   connection: local
   gather_facts: false
 
+  vars:
+    cluster_name: edureka-proj
+
   tasks:
-    - name: Print Hello World
-      debug:
-        msg: "Hello World"
+    - name: Update kubeconfig for EKS cluster
+      shell: |
+        eksctl utils write-kubeconfig \
+          --cluster {{ cluster_name }}
+
+    - name: Apply Kubernetes Deployment
+      shell: kubectl apply -f k8s/deployment.yaml
+
+    - name: Apply Kubernetes Service
+      shell: kubectl apply -f k8s/service.yaml

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edureka-proj-webapp
+  labels:
+    app: edureka-proj-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: edureka-proj-webapp
+  template:
+    metadata:
+      labels:
+        app: edureka-proj-webapp
+    spec:
+      containers:
+        - name: tomcat
+          image: silencer07/edureka-proj-webapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
