@@ -10,7 +10,7 @@
         eksctl utils write-kubeconfig --cluster edureka-proj
 
     - name: Apply Kubernetes Deployment
-      shell: ./kubectl apply -f k8s/deployment.yaml
+      shell: kubectl apply -f k8s/deployment.yaml
 
     - name: Apply Kubernetes Service
-      shell: ./kubectl apply -f k8s/service.yaml
+      shell: kubectl apply -f k8s/service.yaml
