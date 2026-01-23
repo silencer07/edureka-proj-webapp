@@ -6,9 +6,17 @@ metadata:
     app: edureka-proj-webapp
 spec:
   replicas: 2
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # allow 1 extra pod during update
+      maxUnavailable: 0 # ensure zero downtime
+
   selector:
     matchLabels:
       app: edureka-proj-webapp
+
   template:
     metadata:
       labels:
@@ -18,5 +26,20 @@ spec:
         - name: tomcat
           image: silencer07/edureka-proj-webapp:latest
           imagePullPolicy: Always
+
           ports:
             - containerPort: 8080
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10

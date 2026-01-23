@@ -18,5 +18,8 @@
     - name: Apply Kubernetes Deployment
       shell: kubectl apply -f k8s/deployment.yaml --validate=false
 
+    - name: Force rollout of Deployment
+      shell: kubectl rollout restart deployment edureka-proj-webapp
+
     - name: Apply Kubernetes Service
       shell: kubectl apply -f k8s/service.yaml --validate=false
