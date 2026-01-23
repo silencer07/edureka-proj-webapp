@@ -62,7 +62,8 @@ pipeline {
 
                 script {
                     sh """
-                        docker push $DOCKERHUB_USER/$DOCKERHUB_REPO:$BUILD_NUMBER_TAG
+                        docker tag $DOCKERHUB_USER/$DOCKERHUB_REPO:$BUILD_NUMBER_TAG $DOCKERHUB_USER/$DOCKERHUB_REPO:latest
+                        docker push $DOCKERHUB_USER/$DOCKERHUB_REPO:latest
                     """
                 }
             }
