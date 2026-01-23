@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: edureka-proj-webapp-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: edureka-proj-webapp
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
+      nodePort: 30080
